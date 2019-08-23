@@ -1,0 +1,215 @@
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+###############################
+#      CONFIGURATION I3       #
+###############################
+
+set $mod Mod4
+set $alt Mod1
+
+# Font Police
+font pango:DejaVu Sans Mono 8
+
+# Fond d'écran
+exec_always --no-startup-id feh --bg-scale ~/Images/desktop.png
+
+# bordures
+hide_edge_borders both
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+#########################################
+####### Les racourcirs du clavier #######
+######### Execution des applies #########
+#########################################
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+bindsym $mod+t exec rxvt
+
+# Fermeture des fénètres
+bindsym $mod+Shift+q kill
+bindsym $alt+F4 kill
+
+# Rofi : Lanceur d'application
+bindsym $mod+d exec rofi -show drun
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+M move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+###############################
+#        WORKSPACES           #
+###############################
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $monitorLeft VGA-1
+set $monitorRight DP-2
+
+# Ecran associé à chaque Workspace
+workspace $ws1 output $monitorLeft
+workspace $ws2 output $monitorRight
+workspace $ws3 output $monitorRight
+workspace $ws4 output $monitorLeft
+workspace $ws5 output $monitorRight
+workspace $ws6 output $monitorRight
+workspace $ws7 output $monitorRight
+workspace $ws8 output $monitorRight
+
+# switch to workspace
+bindsym $mod+ampersand workspace $ws1
+bindsym $mod+eacute workspace $ws2
+bindsym $mod+quotedbl workspace $ws3
+bindsym $mod+apostrophe workspace $ws4
+bindsym $mod+parenleft workspace $ws5
+bindsym $mod+minus workspace $ws6
+bindsym $mod+egrave workspace $ws7
+bindsym $mod+underscore workspace $ws8
+bindsym $mod+ccedilla workspace $ws9
+bindsym $mod+agrave workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+eacute move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+egrave move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+ccedilla move container to workspace $ws9
+bindsym $mod+Shift+agrave move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Quitter i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Vous avez appuyé sur le raccourci de sortie. Voulez-vous vraiment quitter i3? Cela mettra fin à votre session X.' -b ', quitter i3' 'i3-msg exit'"
+
+# Ouvrir l'exploreur de fichier
+bindsym $mod+w exec "/usr/bin/firefox"
+bindsym $mod+g exec "/usr/bin/google-chrome"
+bindsym $mod+n exec "/usr/bin/thunar"
+
+# lock
+bindsym $mod+Shift+x exec i3lock --color 475263
+
+# resize window
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym m resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Les Espaces de travail
+assign [class="jetbrains-idea|Code"]                    1
+assign [class="Google-chrome"]                          2
+assign [class="Firefox"]                                3
+assign [class="Rxvt|Gnome-terminal"]                    4
+assign [class="Thunar"]                 	        5
+assign [class="Zeal"]                 	                6
+assign [class="vlc"]                 	                7
+# assign [class="GitKraken"]                 	        9
+
+# Force certaines apps à des wokspaces dédiés
+for_window [class="Zeal"]                               move to workspace 6
+for_window [class="vlc"]                                move to workspace 7
+# for_window [class="Pavucontrol"]                        floating enable
+
+# Applications au démarrage
+exec --no-startup-id compton
+exec --no-startup-id google-chrome
+#exec --no-startup-id code
+#exec --no-startup-id urxvt
+#exec --no-startup-id thunar
+#exec --no-startup-id zeal
+#exec --no-startup-id vlc
+#exec --no-startup-id skypeforlinux
+#exec --no-startup-id discord
+
+# I3 Gaps
+for_window [class="^.*"] border pixel 2
+gaps inner 15
+smart_borders on
+smart_gaps on
+
+# Redémarre polybar quand on redémarre i3
+exec_always --no-startup-id "killall polybar; polybar -r left & polybar -r right"
+#exec_always --no-startup-id "killall polybar; polybar -r default"
+

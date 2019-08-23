@@ -1,0 +1,410 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;; Configuration de Polybar ;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[colors]
+background      =   ${xrdb:background}
+background-alt  =   ${xrdb:background-alt}
+foreground      =   ${xrdb:foreground}
+foreground-alt  =   ${xrdb:foreground-alt}
+disconnected    =   ${xrdb:disconnected}
+underline       =   ${xrdb:underline}
+primary         =   ${xrdb:primary}
+secondary       =   ${xrdb:secondary}
+alert           =   ${xrdb:alert}
+accent          =   ${xrdb:accent}
+power           =   ${xrdb:power}
+active          =   ${xrdb:active}
+
+
+; Bar Principale
+; ======================
+[bar/default]
+width           =   100%
+height          =   25
+radius          =   0
+fixed-center    =   true
+
+
+; Definition de l'apparence
+; ==============================================
+background              =   ${colors.background}
+foreground              =   ${colors.foreground}
+line-size               =   0
+line-color              =   ${colors.foreground}
+border-size             =   3
+border-color            =   ${colors.background}
+underline-color         =   ${colors.underline}
+spacing                 =   0
+padding-left            =   0
+padding-right           =   0
+module-margin-left 		= 	1
+module-margin-right 	= 	1
+separator 				= 
+cursor-click 			= 	pointer
+cursor-scroll 			= 	ns-resize
+
+
+; La Police et les icones du font
+; ===============================
+font-0 = Ubuntu:style=Regular:size=9;2
+font-1 = FontAwesome 5 Free:style=Solid:pixelsize=9;2
+font-2 = FontAwesome 5 Brands:pixelsize=9;2
+
+
+; MODULES
+; =======
+modules-center = xwindow
+modules-left = i3
+wm-restack = i3
+enable-ipc = true
+
+tray-padding = 2
+tray-transparent = true
+tray-position = right
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-scale = 1
+
+
+; BAR     
+; ===========================================================================
+
+; Bar / Left
+;;;;;;;;;;;;;;;;;;;;;
+[bar/left]
+inherit = bar/default
+monitor = VGA-1
+modules-right = xkeyboard weather volume eth date
+
+
+; Bar / Right
+;;;;;;;;;;;;;;;;;;;;;
+[bar/right]
+inherit = bar/default
+monitor = DP-2
+modules-right = filesystem memory cpu temperature powermenu
+
+
+; Xwindow
+;;;;;;;;;;;;;;;;;;;;;
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+label-background = #458588
+label-padding = 4
+
+
+; BSPWM
+;;;;;;;;;;;;;;;;;;;;
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %icon%
+label-focused-background = #458588
+label-focused-foreground= #fff
+label-focused-padding = 3
+
+label-occupied = %icon%
+label-occupied-padding = 3
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 3
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 3
+
+
+; I3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+enable-click = true
+enable-scroll = false
+fuzzy-match = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+
+label-focused = %icon%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-foreground = ${module/bspwm.label-focused-foreground}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+label-unfocused = %icon%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+label-visible = %icon%
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %icon%
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+ws-icon-0 = 1;Code 		
+ws-icon-1 = 2;Chrome 	
+ws-icon-2 = 3;Firefox 	
+ws-icon-3 = 4;Terminal  
+ws-icon-4 = 5;Dossier  	
+ws-icon-5 = 6;Zeal 			
+ws-icon-6 = 7;Vlc 			
+ws-icon-default = Bureau 
+
+
+; Date
+;;;;;;;;;;;;;;;;;;;;
+[module/date]
+type = internal/date
+interval = 1.0
+date =  %a %b %d,
+time =  %H:%M
+label = %date% %time%
+format = <label>
+
+format-padding = 3
+format-background = ${colors.foreground-alt}
+format-foreground = ${colors.background}
+
+
+; Volume
+;;;;;;;;;;;;;;;;;;;;;;
+[module/volume]
+type = internal/volume
+
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-foreground  = #fff
+format-volume-background  = #ff6ac1
+format-muted-background  = #ff6ac1
+format-muted = <label-muted>
+label-volume = %percentage%%
+label-muted = 
+
+label-muted-foreground = ${colors.background}
+format-volume-padding = 3
+format-muted-padding = 3
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
+
+
+; Ethernet
+;;;;;;;;;;;;;;;;;;;;;;;;
+[module/eth]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-background = #98971a
+label-connected =  %local_ip%
+label-connected-padding = 3
+
+label-connected-foreground = #fff
+label-disconnected =  
+format-disconnected-background = #98971a
+label-disconnected-foreground = ${colors.background}
+label-disconnected-padding = 3
+
+
+; Keyboard   
+;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-xkeyboard = <label-layout> 
+label-layout = %layout%  | 
+label-indicator-on-capslock = 
+label-indicator-off-capslock = 
+
+
+format-foreground = #fff
+format-background = #8b8b8b
+format-padding = 3
+
+
+; CPU
+;;;;;;;;;;;;;;;;;;;
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+label = %percentage%%
+format-foreground = #fff
+format-background = #FB8C00
+format-padding = 3
+
+
+; Memory Ram
+;;;;;;;;;;;;;;;;;;;;;;
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-foreground = #fff
+format-background = #1a73e8
+label = %percentage_used%%
+format-padding = 3
+
+
+; HDD File System
+;;;;;;;;;;;;;;;;;;;;;;
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = " %mountpoint%: %used% sur %total% [%percentage_used%%]"
+label-mounted-foreground = #fff
+label-mounted-background = #a89984
+label-unmounted = %mountpoint%  
+label-unmounted-foreground = ${colors.foreground}
+label-mounted-padding = 3
+label-unmounted-padding = 3
+
+
+;Weather
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/weather]
+type = custom/script
+
+; Script
+exec = sh /home/kayamaox/.config/polybar/scripts/weather.sh
+exec-if = ping openweathermap.org -c 1
+
+; Update interval
+interval = 600
+
+; Label
+label            = %output%
+label-foreground = ${colors.background}
+label-background = ${colors.foreground}
+label-padding = 3
+
+
+; Temperature
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+format = <ramp> <label>
+format-warn = <ramp><label-warn>
+format-padding = 3
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = #fff
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = #fff
+format-background = #4CAF50
+
+
+; Lecteur MDP
+;;;;;;;;;;;;;;;;;;;;;;
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+password = 
+interval = 2
+
+format-online =    <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+; Available tokens:
+;   %artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = %title%
+
+
+; Power Menu
+;;;;;;;;;;;;;;;;;;;;;;
+[module/powermenu]
+type = custom/menu
+label-open = 
+label-close =  cancel
+format-spacing = 0
+label-open-padding = 4 
+label-close-padding = 4
+label-separator = |
+label-open-foreground = ${colors.foreground}
+label-open-background = ${colors.power}
+
+menu-0-0 =  
+menu-0-0-exec = menu-open-1
+menu-0-1 =  
+menu-0-1-exec = menu-open-2
+menu-0-0-foreground = ${colors.primary}
+menu-0-1-foreground = ${colors.power}
+menu-0-0-padding = 4
+menu-0-1-padding = 4
+
+menu-1-0 = 
+menu-1-0-exec = menu-open-0
+menu-1-1 = 
+menu-1-1-exec = reboot
+menu-1-0-foreground = ${colors.alert}
+menu-1-1-foreground = ${colors.active}
+menu-1-1-padding = 3
+menu-1-0-padding = 4
+
+menu-2-0 = 
+menu-2-0-exec = menu-open-0
+menu-2-1 = 
+menu-2-1-exec = poweroff
+menu-2-0-foreground = ${colors.alert}
+menu-2-1-foreground = ${colors.active}
+menu-2-1-padding = 4
+menu-2-0-padding = 4
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
