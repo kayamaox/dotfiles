@@ -18,7 +18,7 @@ Installer les dépendances requises et aussi les dépendances facultatives afin 
   * fish 
   	- [Oh my fish](https://github.com/oh-my-fish/oh-my-fish) Pour la configuration de fish avec les differents theme, executer cette commande:<br> ``chsh -s /usr/bin/fish`` pour que fish soit la console par defaut.
   * zsh
-  - [Oh my zsh](https://github.com/robbyrussell/oh-my-zsh) Pour finaliser l'installation de zsh <br Attention pendant l'installation de zsh en executant cette commande : ``sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`` via curl ou ``sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`` via wget, zsh pourrait s'installer comme console par defaut si vous tapez sur Entrée sans lire la question.
+    - [Oh my zsh](https://github.com/robbyrussell/oh-my-zsh) Pour finaliser l'installation de zsh <br Attention pendant l'installation de zsh en executant cette commande : ``sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`` via curl ou ``sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`` via wget, zsh pourrait s'installer comme console par defaut si vous tapez sur Entrée sans lire la question.
   * Vim
   * Visual Code Insiders
   * IDEA IntelliJ Ultimate
