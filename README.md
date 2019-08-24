@@ -22,3 +22,4 @@ Installer les dépendances requises et aussi les dépendances facultatives afin 
   * Vim
   * Visual Code Insiders
   * IDEA IntelliJ Ultimate
+  ![Wallpaper](desktop.png)
