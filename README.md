@@ -25,3 +25,6 @@ Installer les dépendances requises et aussi les dépendances facultatives afin 
   
   ## Wallpaper
   ![Wallpaper](desktop.png)
+  
+   ## Exemplaire
+  ![Exemplaire](screenshot.png)
