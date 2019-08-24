@@ -25,8 +25,8 @@ get_icon() {
 }
 
 # Global settings
-KEY="1706ca68b4fc1b61194c6ba3a342cf4d"
-CITY="Abidjan"
+KEY=""
+CITY=""
 UNITS="metric"
 SYMBOL="°C"
 API="https://api.openweathermap.org/data/2.5"
