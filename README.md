@@ -5,7 +5,7 @@ Configuration I3 et Polybar sur Ubuntu
 Ajouter le dossier config dans votre $HOME/.config/ selon leur emplacement correct.
 
 ### Installer les Packages
-#### sur Arch-linux (le gestionnaire de package de decoffrage AUR) ou avefc votre terminal :
+#### sur Ubuntu avec votre Terminal :
 sudo apt install nom_du_package
   * i3 / i3-gaps
   	- [i3-gaps](https://github.com/Airblader/i3) suivre le wiki [i3-gaps wiki](https://github.com/Airblader/i3/wiki). Installer les dépendances requises.
