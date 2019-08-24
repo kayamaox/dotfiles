@@ -24,7 +24,7 @@ Installer les dépendances requises et aussi les dépendances facultatives afin 
   * IDEA IntelliJ Ultimate
   
   ## Wallpaper
-  ![Wallpaper](desktop.png)
+  ![Wallpaper](https://raw.githubusercontent.com/kayamaox/dotfiles/master/desktop.png "Wallpaper")
   
    ## Exemplaire
-  ![Exemplaire](screenshot.png)
+  ![Exemplaire](https://raw.githubusercontent.com/kayamaox/dotfiles/master/screenshot.png "Exemplaire")
