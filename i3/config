@@ -7,7 +7,7 @@ set $mod Mod4
 set $alt Mod1
 
 # Font Police
-font pango:DejaVu Sans Mono 8
+font pango:Fira Code Bold 10
 
 # Fond d'écran
 exec_always --no-startup-id feh --bg-scale ~/Images/desktop.png
@@ -24,8 +24,8 @@ floating_modifier $mod
 #########################################
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
-bindsym $mod+t exec rxvt
+bindsym $mod+Return exec rxvt
+bindsym $mod+t exec gnome-terminal
 
 # Fermeture des fénètres
 bindsym $mod+Shift+q kill
@@ -96,8 +96,11 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $monitorLeft VGA-1
-set $monitorRight DP-2
+set $monitorLeft HDMI-1
+set $monitorRight DP-3
+exec --no-startup-id xrandr --output eDP-1 --off
+
+
 
 # Ecran associé à chaque Workspace
 workspace $ws1 output $monitorLeft

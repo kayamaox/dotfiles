@@ -39,7 +39,7 @@ active          =   ${xrdb:active}
 ; ======================
 [bar/default]
 width           =   100%
-height          =   27
+height          =   25
 radius          =   0
 fixed-center    =   true
 
@@ -56,8 +56,8 @@ underline-color         =   ${colors.underline}
 spacing                 =   0
 padding-left            =   0
 padding-right           =   0
-module-margin-left 		= 	0
-module-margin-right 	= 	0
+module-margin-left 		= 	1
+module-margin-right 	= 	1
 separator 				= 
 cursor-click 			= 	pointer
 cursor-scroll 			= 	ns-resize
@@ -65,9 +65,9 @@ cursor-scroll 			= 	ns-resize
 
 ; La Police et les icones du font
 ; ===============================
-font-0 = Fira Code:style=Bold:size=9;2
-font-1 = FontAwesome 5 Free:style=Solid:pixelsize=10;2
-font-2 = FontAwesome 5 Brands:pixelsize=10;2
+font-0 = Ubuntu:style=Regular:size=9;2
+font-1 = FontAwesome 5 Free:style=Solid:pixelsize=9;2
+font-2 = FontAwesome 5 Brands:pixelsize=9;2
 
 
 ; MODULES
@@ -93,16 +93,16 @@ tray-scale = 1
 ;;;;;;;;;;;;;;;;;;;;;
 [bar/left]
 inherit = bar/default
-monitor = HDMI-1
-modules-right = weather eth date
+monitor = VGA-1
+modules-right = xkeyboard weather volume eth date
 
 
 ; Bar / Right
 ;;;;;;;;;;;;;;;;;;;;;
 [bar/right]
 inherit = bar/default
-monitor = DP-3
-modules-right = volume memory cpu temperature battery powermenu
+monitor = DP-2
+modules-right = filesystem memory cpu temperature powermenu
 
 
 ; Xwindow
@@ -111,7 +111,7 @@ modules-right = volume memory cpu temperature battery powermenu
 type = internal/xwindow
 label = %title:0:30:...%
 label-background = #458588
-label-padding = 2
+label-padding = 4
 
 
 ; BSPWM
@@ -122,18 +122,18 @@ type = internal/bspwm
 label-focused = %icon%
 label-focused-background = #458588
 label-focused-foreground= #fff
-label-focused-padding = 1
+label-focused-padding = 3
 
 label-occupied = %icon%
-label-occupied-padding = 1
+label-occupied-padding = 3
 
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-padding = 3
 
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 1
+label-empty-padding = 3
 
 
 ; I3
@@ -166,14 +166,14 @@ label-urgent = %icon%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
-ws-icon-0 = 1; 	Code
-ws-icon-1 = 2; 	Chrome
-ws-icon-2 = 3; 	Firefox
-ws-icon-3 = 4; 	Terminal
-ws-icon-4 = 5; 	Fichier
-ws-icon-5 = 6; 	Zeal	
-ws-icon-6 = 7; 	Vlc	
-ws-icon-default =  Bureau
+ws-icon-0 = 1;Code 		
+ws-icon-1 = 2;Chrome 	
+ws-icon-2 = 3;Firefox 	
+ws-icon-3 = 4;Terminal  
+ws-icon-4 = 5;Dossier  	
+ws-icon-5 = 6;Zeal 			
+ws-icon-6 = 7;Vlc 			
+ws-icon-default = Bureau 
 
 
 ; Date
@@ -181,13 +181,14 @@ ws-icon-default =  Bureau
 [module/date]
 type = internal/date
 interval = 1.0
+date =  %a %b %d,
 time =  %H:%M
-date =  %a %d %b,
 label = %date% %time%
 format = <label>
 
-format-padding = 1
-format-foreground = ${colors.foreground-alt}
+format-padding = 3
+format-background = ${colors.foreground-alt}
+format-foreground = ${colors.background}
 
 
 ; Volume
@@ -200,15 +201,15 @@ use-ui-max = true
 
 format-volume = <ramp-volume> <label-volume>
 format-volume-foreground  = #fff
-format-volume-background  = #d3869b
-format-muted-background  = #d3869b
+format-volume-background  = #ff6ac1
+format-muted-background  = #ff6ac1
 format-muted = <label-muted>
 label-volume = %percentage%%
 label-muted = 
 
 label-muted-foreground = ${colors.background}
-format-volume-padding = 1
-format-muted-padding = 1
+format-volume-padding = 3
+format-muted-padding = 3
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -226,13 +227,13 @@ interval = 3.0
 format-connected = <label-connected>
 format-connected-background = #98971a
 label-connected =  %local_ip%
-label-connected-padding = 2
+label-connected-padding = 3
 
 label-connected-foreground = #fff
 label-disconnected =  
 format-disconnected-background = #98971a
 label-disconnected-foreground = ${colors.background}
-label-disconnected-padding = 2
+label-disconnected-padding = 3
 
 
 ; Keyboard   
@@ -249,7 +250,7 @@ label-indicator-off-capslock = 
 
 format-foreground = #fff
 format-background = #8b8b8b
-format-padding = 2
+format-padding = 3
 
 
 ; CPU
@@ -260,8 +261,8 @@ interval = 2
 format-prefix = " "
 label = %percentage%%
 format-foreground = #fff
-format-background = #fabd2f
-format-padding = 2
+format-background = #FB8C00
+format-padding = 3
 
 
 ; Memory Ram
@@ -271,9 +272,9 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-foreground = #fff
-format-background = #99d6bf
+format-background = #1a73e8
 label = %percentage_used%%
-format-padding = 2
+format-padding = 3
 
 
 ; HDD File System
@@ -282,13 +283,13 @@ format-padding = 2
 type = internal/fs
 interval = 25
 mount-0 = /
-label-mounted = " %used%/%total%"
+label-mounted = " %mountpoint%: %used% sur %total% [%percentage_used%%]"
 label-mounted-foreground = #fff
 label-mounted-background = #a89984
 label-unmounted = %mountpoint%  
 label-unmounted-foreground = ${colors.foreground}
-label-mounted-padding = 2
-label-unmounted-padding = 2
+label-mounted-padding = 3
+label-unmounted-padding = 3
 
 
 ;Weather
@@ -305,8 +306,9 @@ interval = 600
 
 ; Label
 label            = %output%
-label-foreground = ${colors.foreground-alt}
-label-padding = 2
+label-foreground = ${colors.background}
+label-background = ${colors.foreground}
+label-padding = 3
 
 
 ; Temperature
@@ -317,7 +319,7 @@ thermal-zone = 0
 warn-temperature = 60
 format = <ramp> <label>
 format-warn = <ramp><label-warn>
-format-padding = 2
+format-padding = 3
 label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = #fff
@@ -360,41 +362,6 @@ label-song-ellipsis = true
 label-song = %title%
 
 
-; Batterie
-;;;;;;;;;;;;;;;;;;;;;;;
-[module/battery]
-type = internal/battery
-full-at = 99%
-battery = BAT0
-adapter = AC0
-poll-interval = 5
-
-format-charging =   <animation-charging><label-charging>
-format-discharging = <ramp-capacity><label-discharging>
-format-full = <ramp-capacity><label-full>
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-background = {colors.foreground}
-label-foreground = {colors.background}
-label-full = %percentage%
-format-charging-padding = 1
-format-discharging-padding = 1
-format-full-padding = 1
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
-
-
 ; Power Menu
 ;;;;;;;;;;;;;;;;;;;;;;
 [module/powermenu]
@@ -402,8 +369,8 @@ type = custom/menu
 label-open = 
 label-close =  cancel
 format-spacing = 0
-label-open-padding = 2 
-label-close-padding = 2
+label-open-padding = 4 
+label-close-padding = 4
 label-separator = |
 label-open-foreground = ${colors.foreground}
 label-open-background = ${colors.power}
@@ -414,8 +381,8 @@ menu-0-1 = 
 menu-0-1-exec = menu-open-2
 menu-0-0-foreground = ${colors.primary}
 menu-0-1-foreground = ${colors.power}
-menu-0-0-padding = 2
-menu-0-1-padding = 2
+menu-0-0-padding = 4
+menu-0-1-padding = 4
 
 menu-1-0 = 
 menu-1-0-exec = menu-open-0
@@ -423,8 +390,8 @@ menu-1-1 = 
 menu-1-1-exec = reboot
 menu-1-0-foreground = ${colors.alert}
 menu-1-1-foreground = ${colors.active}
-menu-1-1-padding = 2
-menu-1-0-padding = 2
+menu-1-1-padding = 3
+menu-1-0-padding = 4
 
 menu-2-0 = 
 menu-2-0-exec = menu-open-0
@@ -432,8 +399,8 @@ menu-2-1 = 
 menu-2-1-exec = poweroff
 menu-2-0-foreground = ${colors.alert}
 menu-2-1-foreground = ${colors.active}
-menu-2-1-padding = 2
-menu-2-0-padding = 2
+menu-2-1-padding = 4
+menu-2-0-padding = 4
 
 [settings]
 screenchange-reload = true
