@@ -1,0 +1,38 @@
+# ~/.config/betterlockscreenrc
+
+# default options
+display_on=0
+span_image=false
+lock_timeout=300
+fx_list=(dim blur dimblur pixel dimpixel color)
+dim_level=40
+blur_level=1
+pixel_scale=10,1000
+solid_color=333333
+wallpaper_cmd="feh --bg-fill"
+quiet=false
+
+# default theme
+loginbox=00000066
+loginshadow=00000000
+locktext="Tapez le mot de passe"
+font="JetBrainsMono NF"
+ringcolor=e0af68
+insidecolor=00000000
+separatorcolor=00000000
+ringvercolor=e0af68
+insidevercolor=00000000
+ringwrongcolor=e0af68
+insidewrongcolor=d23c3dff
+timecolor=e0af68
+time_format="%H:%M:%S"
+greetercolor=e0af68
+layoutcolor=e0af68
+keyhlcolor=d23c3dff
+bshlcolor=d23c3dff
+veriftext="Vérification..."
+verifcolor=9ece6a
+wrongtext="Échec!"
+wrongcolor=d23c3dff
+modifcolor=d23c3dff
+bgcolor=000000ff
