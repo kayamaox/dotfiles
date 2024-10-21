@@ -6,8 +6,7 @@ Le **Arch Linux** & **i3wm** dotfiles!
 
 Il s'agit de la troisième version de mes fichiers dotfiles, au fur et à mesure que j'acquiers plus d'expérience, je suis capable de créer des fichiers dotfiles plus professionnels.
 
-## Config
-Ajouter le dossier config dans votre $HOME/.config/ selon leur emplacement correct.
+## Information
 
 ### Installer les Packages
 #### sur Ubuntu avec votre Terminal :
