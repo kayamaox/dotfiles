@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+icon_theme_path="/home/$USER/.local/share/icons/Gruvbox-Material-Dark"
+
+path="/sys/class/backlight/amdgpu_bl1"
+icon="$icon_theme_path/16x16/actions/brightnesssettings.svg"
+
+tag="string:x-dunst-stack-tag:brightness"
+
+bar_color="#e0af68"
+
+val=$(brightnessctl g)
+max=$(brightnessctl max)
+
+dunstify -h int:value:$(($val * 100 / $max)) \
+	-h string:hlcolor:$bar_color \
+	-h $tag \
+	-i "$icon" \
+	"Luminosité:" \
+	"$val"
