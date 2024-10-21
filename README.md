@@ -1,6 +1,6 @@
 # Kayamaox Dotfiles
 
-## [Showcase](#showcase) · [Manual installation](#manual-installation) · [Detailed info](#detailed-information) · [Troubleshooting](#troubleshooting) · [Contributions](#contributions)
+## [Présentation](#showcase) · [Installation manuelle](#manual-installation) · [Informations détaillées](#detailed-information) · [Dépannage](#troubleshooting)
 
 Le **Arch Linux** & **i3wm** dotfiles!
 
