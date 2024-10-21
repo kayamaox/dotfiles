@@ -1,5 +1,10 @@
-# dotfiles
-Configuration I3 et Polybar sur Ubuntu
+# Kayamaox Dotfiles
+
+## [Showcase](#showcase) · [Manual installation](#manual-installation) · [Detailed info](#detailed-information) · [Troubleshooting](#troubleshooting) · [Contributions](#contributions)
+
+Le **Arch Linux** & **i3wm** dotfiles!
+
+Il s'agit de la troisième version de mes fichiers dotfiles, au fur et à mesure que j'acquiers plus d'expérience, je suis capable de créer des fichiers dotfiles plus professionnels.
 
 ## Config
 Ajouter le dossier config dans votre $HOME/.config/ selon leur emplacement correct.
